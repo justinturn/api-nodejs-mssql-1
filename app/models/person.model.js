@@ -1,54 +1,52 @@
 const { poolPromise } = require('../../config/database')
 
-exports.create = async (date) => {
-    const pool = await poolPromise;
+// exports.create = async (date) => {
+//     const pool = await poolPromise;
 
-    const rs = await pool
-        .request()
-        .query(`INSERT INTO person (name)
-                VALUES ('${date.name}')`)
+//     const rs = await pool
+//         .request()
+//         .query(`INSERT INTO person (name)
+//                 VALUES ('${date.name}')`)
 
-    return rs.rowsAffected;
-}
+//     return rs.rowsAffected;
+// }
 
 exports.read = async () => {
     const pool = await poolPromise;
     const rs = await pool
         .request()
-        .query(`SELECT *
-                FROM person`)
-
+        .query(`select jobNum,netPrice,MfgShipDate from ProdSchedSW_UnitDates_View where prod_status = 'M'`)
     return rs.recordset;
 }
 
-exports.update = async (id, date) => {
-    const pool = await poolPromise;
-    const rs = await pool
-        .request()
-        .query(`UPDATE person SET
-                name = '${date[0].name}'                    
-                WHERE id = ${id}`);
+// exports.update = async (id, date) => {
+//     const pool = await poolPromise;
+//     const rs = await pool
+//         .request()
+//         .query(`UPDATE person SET
+//                 name = '${date[0].name}'                    
+//                 WHERE id = ${id}`);
 
-    return rs.rowsAffected;
-}
+//     return rs.rowsAffected;
+// }
 
-exports.delete = async (id) => {
-    const pool = await poolPromise;
-    const rs = await pool
-        .request()
-        .query(`DELETE FROM person
-                WHERE id = ${id}`)
+// exports.delete = async (id) => {
+//     const pool = await poolPromise;
+//     const rs = await pool
+//         .request()
+//         .query(`DELETE FROM person
+//                 WHERE id = ${id}`)
 
-    return rs.rowsAffected;
-}
+//     return rs.rowsAffected;
+// }
 
-exports.readById = async(id) =>{
-    const pool = await poolPromise;
-    const rs = await pool
-            .request()
-            .query(`SELECT *
-                    FROM person 
-                    WHERE id = ${id} `);
+// exports.readById = async(id) =>{
+//     const pool = await poolPromise;
+//     const rs = await pool
+//             .request()
+//             .query(`SELECT *
+//                     FROM person 
+//                     WHERE id = ${id} `);
     
-            return rs.recordset;
-}
+//             return rs.recordset;
+// }
